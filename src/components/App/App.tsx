@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useUser from "../../hooks/useUser/useUser";
 
 function App() {
+  const { getProducts } = useUser();
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
   return (
     <div className="App">
       <header className="App-header">
