@@ -28,6 +28,10 @@ body {
     padding-left: 4rem;
     padding-right: 4rem;
   }
+  @media (min-width: 700px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 `;
 export default GlobalStyles;
