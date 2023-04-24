@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
 html {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  background-color: #FFFFFC;
+  background-color: #002e34;
   font-family: "Roboto";
 }
 ::-webkit-scrollbar {

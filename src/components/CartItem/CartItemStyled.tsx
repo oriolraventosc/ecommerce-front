@@ -6,9 +6,10 @@ const CartItemStyled = styled("div")`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #80808017;
+  background-color: #fff;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  border-radius: 5px;
   img {
     height: 100%;
     width: 80%;
