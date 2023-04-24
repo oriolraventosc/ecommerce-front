@@ -23,6 +23,14 @@ const UserSlice = createSlice({
       ...initialState,
       cart: [...initialState.cart, action.payload],
     }),
+    deleteFromCart: (initialState, action: PayloadAction<string>) => ({
+      ...initialState,
+      cart: [
+        ...initialState.cart.filter(
+          (product) => product.name !== action.payload
+        ),
+      ],
+    }),
   },
 });
 
@@ -31,4 +39,5 @@ export const userReducer = UserSlice.reducer;
 export const {
   loadProducts: loadProductsActionCreator,
   addToCart: addToCartActionCreator,
+  deleteFromCart: deleteFromCartActionCreator,
 } = UserSlice.actions;

@@ -2,23 +2,23 @@ import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "@mui/material";
 import GlobalStyles from "../../styles/globalStyles";
 import mainTheme from "../../styles/mainTheme";
-import ProductCard from "./ProductCard";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { BrowserRouter } from "react-router-dom";
+import CartItem from "./CartItem";
 
-describe("Given a ProductCard component", () => {
+describe("Given a CartItem component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show an image with an accessible name 'product'", () => {
+    test("Then it should show an image with an alt text 'product'", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
             <ThemeProvider theme={mainTheme}>
               <GlobalStyles />
-              <ProductCard
+              <CartItem
                 name="product"
                 image="product.jpg"
-                price="5€"
+                price="5"
                 quantity={2}
                 key={123}
               />
@@ -35,16 +35,16 @@ describe("Given a ProductCard component", () => {
       expect(expectedImage).toBeInTheDocument();
     });
 
-    test("Then it should show an heading level 2 title with the text 'product'", () => {
+    test("Then it should show a heading level 3 title", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
             <ThemeProvider theme={mainTheme}>
               <GlobalStyles />
-              <ProductCard
+              <CartItem
                 name="product"
                 image="product.jpg"
-                price="5€"
+                price="5"
                 quantity={2}
                 key={123}
               />
@@ -56,19 +56,19 @@ describe("Given a ProductCard component", () => {
 
       const expectedHeading = screen.queryByRole("heading", {
         name: headingAccessibleName,
-        level: 2,
+        level: 3,
       });
 
       expect(expectedHeading).toBeInTheDocument();
     });
 
-    test("Then it should show a text with the price '5€'", () => {
+    test("Then it should show the product price", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
             <ThemeProvider theme={mainTheme}>
               <GlobalStyles />
-              <ProductCard
+              <CartItem
                 name="product"
                 image="product.jpg"
                 price="5"
@@ -79,23 +79,26 @@ describe("Given a ProductCard component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const textAccessibleName = "5€";
+      const priceAccessibleName = "5€";
 
-      const expectedText = screen.queryByLabelText(textAccessibleName);
+      const expectedHeading = screen.queryByRole("heading", {
+        name: priceAccessibleName,
+        level: 3,
+      });
 
-      expect(expectedText).toBeInTheDocument();
+      expect(expectedHeading).toBeInTheDocument();
     });
 
-    test("Then it should show a button with the text 'ADD TO CART'", () => {
+    test("Then it should show a spinbutton element", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
             <ThemeProvider theme={mainTheme}>
               <GlobalStyles />
-              <ProductCard
+              <CartItem
                 name="product"
                 image="product.jpg"
-                price="5€"
+                price="5"
                 quantity={2}
                 key={123}
               />
@@ -104,7 +107,30 @@ describe("Given a ProductCard component", () => {
         </BrowserRouter>
       );
 
-      const expectedButton = screen.queryByRole("button");
+      const expectedISpinButton = screen.queryByRole("spinbutton");
+
+      expect(expectedISpinButton).toBeInTheDocument();
+    });
+
+    test("Then it should show a button element", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ThemeProvider theme={mainTheme}>
+              <GlobalStyles />
+              <CartItem
+                name="product"
+                image="product.jpg"
+                price="5"
+                quantity={2}
+                key={123}
+              />
+            </ThemeProvider>
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const expectedButton = screen.queryByRole("button", { name: "Remove" });
 
       expect(expectedButton).toBeInTheDocument();
     });
