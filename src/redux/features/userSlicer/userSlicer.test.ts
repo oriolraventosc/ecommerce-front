@@ -3,6 +3,7 @@ import {
   addToCartActionCreator,
   loadProductsActionCreator,
   deleteFromCartActionCreator,
+  emptyCartActionCreator,
   userReducer,
 } from "./userSlicer";
 
@@ -132,6 +133,49 @@ describe("Given a userReducer", () => {
             image: "usb.jpg",
           },
         ],
+      };
+
+      const newState = userReducer(initialState, action);
+
+      expect(newState).toStrictEqual(expectedState);
+    });
+  });
+
+  describe("When it is invoked with the method emptyCart", () => {
+    test("Then it should empty the products cart", () => {
+      const action = emptyCartActionCreator();
+      const initialState = {
+        productsList: [],
+        cart: [
+          {
+            name: "USB SamDisk 2.0 64GB",
+            price: "10.99€",
+            id: "12345",
+            quantity: 2,
+            image: "usb.jpg",
+          },
+          {
+            name: "USB",
+            price: "10.99€",
+            id: "12345",
+            quantity: 2,
+            image: "usb.jpg",
+          },
+        ],
+        checkoutData: {
+          name: "",
+          email: "",
+          pendingProducts: [],
+        },
+      };
+      const expectedState = {
+        productsList: [],
+        checkoutData: {
+          name: "",
+          email: "",
+          pendingProducts: [],
+        },
+        cart: [],
       };
 
       const newState = userReducer(initialState, action);

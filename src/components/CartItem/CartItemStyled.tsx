@@ -36,8 +36,7 @@ const CartItemStyled = styled("div")`
   }
   .cart-item__remove:hover {
     cursor: pointer;
-    background-color: ${colors.dark};
-    color: #fff;
+    color: ${colors.dark};
     transition: 0.2s;
   }
   .product-information {
