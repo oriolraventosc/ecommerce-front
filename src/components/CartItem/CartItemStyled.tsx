@@ -23,7 +23,7 @@ const CartItemStyled = styled("div")`
   }
   .cart-item__remove {
     margin-top: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     background-color: ${colors.light};
     color: ${colors.dark};
     border-radius: 5px;
@@ -36,7 +36,8 @@ const CartItemStyled = styled("div")`
   }
   .cart-item__remove:hover {
     cursor: pointer;
-    color: ${colors.dark};
+    color: #fff;
+    background-color: ${colors.dark};
     transition: 0.2s;
   }
   .product-information {

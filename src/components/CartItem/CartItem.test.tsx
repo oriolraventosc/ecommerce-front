@@ -130,7 +130,9 @@ describe("Given a CartItem component", () => {
         </BrowserRouter>
       );
 
-      const expectedButton = screen.queryByRole("button", { name: "Remove" });
+      const expectedButton = screen.queryByLabelText(
+        "remove button"
+      ) as HTMLElement;
 
       expect(expectedButton).toBeInTheDocument();
     });
