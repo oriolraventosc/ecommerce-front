@@ -11,7 +11,7 @@ const useUser = () => {
       const url = `${apiUrl}products/loadAll`;
       const response = await axios.get(url);
       const apiResponse = response.data;
-      dispatch(loadProductsActionCreator(apiResponse));
+      dispatch(loadProductsActionCreator(apiResponse.productsList));
     } catch {}
   }, [apiUrl, dispatch]);
   return { getProducts };

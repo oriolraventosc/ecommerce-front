@@ -9,20 +9,23 @@ import colors from "./styles/colors";
 import GlobalStyles from "./styles/globalStyles";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { ThemeProvider } from "@mui/material";
+import { BrowserRouter } from "react-router-dom";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={mainTheme}>
-        <StyledThemeProvider theme={colors}>
-          <GlobalStyles />
-          <App />
-        </StyledThemeProvider>
-      </ThemeProvider>
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ThemeProvider theme={mainTheme}>
+          <StyledThemeProvider theme={colors}>
+            <GlobalStyles />
+            <App />
+          </StyledThemeProvider>
+        </ThemeProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
