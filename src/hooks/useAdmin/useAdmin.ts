@@ -13,7 +13,7 @@ const useAdmin = () => {
   const adminLogin = useCallback(
     async (data: loginData) => {
       try {
-        const url = `${apiUrl}/admin/login`;
+        const url = `${apiUrl}admin/login`;
         const response = await axios.post(url, data);
 
         const { accessToken } = await response.data;

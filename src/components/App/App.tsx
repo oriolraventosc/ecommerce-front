@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router";
 import HomePage from "../../pages/HomePage/HomePage";
 import CartPage from "../../pages/CartPage/CartPage";
 import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Navigate to={"/home"} />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );
