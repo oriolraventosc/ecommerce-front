@@ -23,3 +23,9 @@ export interface Admin {
   pendingOrders: Product[];
   finishedOrders: Product[];
 }
+
+export interface CheckoutData {
+  name: string;
+  email: string;
+  pendingProducts: Product[];
+}

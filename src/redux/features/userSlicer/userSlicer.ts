@@ -31,6 +31,10 @@ const UserSlice = createSlice({
         ),
       ],
     }),
+    emptyCart: (initialState) => ({
+      ...initialState,
+      cart: [],
+    }),
   },
 });
 
@@ -40,4 +44,5 @@ export const {
   loadProducts: loadProductsActionCreator,
   addToCart: addToCartActionCreator,
   deleteFromCart: deleteFromCartActionCreator,
+  emptyCart: emptyCartActionCreator,
 } = UserSlice.actions;
