@@ -29,3 +29,18 @@ export interface CheckoutData {
   email: string;
   pendingProducts: Product[];
 }
+
+export interface loginData {
+  username: string;
+  password: string;
+}
+
+export interface JwtPayloadCustom {
+  id: string;
+  username: string;
+  accessToken: string;
+  password: string;
+  pendingOrders: Product[];
+  finishedOrders: Product[];
+  isLogged: boolean;
+}
