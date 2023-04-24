@@ -7,7 +7,7 @@ const ProductCardStyled = styled("article")`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #80808017;
+  background-color: #fff;
 
   img {
     height: 100%;

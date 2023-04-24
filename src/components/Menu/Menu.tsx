@@ -21,7 +21,7 @@ const Menu = (): JSX.Element => {
                 xs: "2rem",
               },
               fontWeight: "700",
-              color: "primary.light",
+              color: "#fff",
               textAlign: "center",
               pt: "0.5rem",
             }}
@@ -35,7 +35,7 @@ const Menu = (): JSX.Element => {
             sx={{
               fontSize: "2rem",
               pt: "0.5rem",
-              color: "primary.dark",
+              color: "primary.light",
             }}
           />
         </NavLink>

@@ -24,7 +24,7 @@ const CartPage = (): JSX.Element => {
                 xs: "2rem",
               },
               fontWeight: "700",
-              color: "primary.dark",
+              color: "primary.light",
               textAlign: "left",
               pt: "1rem",
             }}
