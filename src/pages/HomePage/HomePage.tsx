@@ -3,6 +3,7 @@ import useUser from "../../hooks/useUser/useUser";
 import { useEffect } from "react";
 import { useAppSelector } from "../../redux/hooks";
 import HomePageStyled from "./HomePageStyled";
+import Menu from "../../components/Menu/Menu";
 
 const HomePage = (): JSX.Element => {
   const products = useAppSelector((state) => state.userActions.productsList);
@@ -12,6 +13,7 @@ const HomePage = (): JSX.Element => {
   }, [getProducts]);
   return (
     <>
+      <Menu />
       <HomePageStyled aria-label="products list">
         {products.map((product, index) => (
           <ProductCard

@@ -42,7 +42,7 @@ const ProductCard = ({
         </Typography>
         <Typography
           variant="body2"
-          aria-label={price}
+          aria-label={`${price}€`}
           className="product-card__price"
           sx={{
             fontSize: {
@@ -58,7 +58,7 @@ const ProductCard = ({
             textAlign: "center",
           }}
         >
-          {price}
+          {price}€
         </Typography>
         <Button
           variant="contained"
