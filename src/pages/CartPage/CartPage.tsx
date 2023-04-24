@@ -1,11 +1,10 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useAppSelector } from "../../redux/hooks";
 import Menu from "../../components/Menu/Menu";
 import CartItem from "../../components/CartItem/CartItem";
-import { useNavigate } from "react-router-dom";
+import CheckoutButton from "../../components/CheckoutButton/CheckoutButton";
 
 const CartPage = (): JSX.Element => {
-  const navigate = useNavigate();
   const cartProducts = useAppSelector((state) => state.userActions.cart);
   return (
     <>
@@ -42,26 +41,7 @@ const CartPage = (): JSX.Element => {
             key={index}
           />
         ))}
-        {cartProducts.length >= 1 && (
-          <Button
-            onClick={() => navigate("/checkout")}
-            disableRipple
-            disableFocusRipple
-            aria-label="checkout now"
-            className="checkout-button"
-            sx={{
-              fontSize: "1.5rem",
-              color: "primary.dark",
-              pt: "0.5rem",
-              pb: "0.5rem",
-              pl: "1rem",
-              pr: "1rem",
-              mb: "1rem",
-            }}
-          >
-            Checkout
-          </Button>
-        )}
+        {cartProducts.length >= 1 && <CheckoutButton />}
       </section>
     </>
   );

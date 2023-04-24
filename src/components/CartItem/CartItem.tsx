@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CartItemStyled from "./CartItemStyled";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { deleteFromCartActionCreator } from "../../redux/features/userSlicer/userSlicer";
 import { useAppDispatch } from "../../redux/hooks";
 
@@ -75,12 +75,13 @@ const CartItem = ({
               className="cart-item__quantity"
             ></input>
           </label>
-          <button
+          <Button
+            aria-label="remove button"
             className="cart-item__remove"
             onClick={() => dispatch(deleteFromCartActionCreator(name))}
           >
             Remove
-          </button>
+          </Button>
         </article>
       </CartItemStyled>
     </>
