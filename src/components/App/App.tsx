@@ -4,6 +4,7 @@ import HomePage from "../../pages/HomePage/HomePage";
 import CartPage from "../../pages/CartPage/CartPage";
 import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
+import AdminPage from "../../pages/AdminPage/AdminPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/pending-orders" element={<AdminPage />} />
       </Routes>
     </div>
   );
