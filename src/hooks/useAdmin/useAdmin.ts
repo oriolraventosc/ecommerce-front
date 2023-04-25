@@ -15,30 +15,6 @@ const useAdmin = () => {
   const apiUrl = process.env.REACT_APP_URL;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const adminLogin = useCallback(
-    async (data: loginData) => {
-      try {
-        const url = `${apiUrl}admin/login`;
-        const response = await axios.post(url, data);
-
-        const { accessToken } = await response.data;
-
-        const loggedUser: JwtPayloadCustom = jwtDecode(accessToken);
-        dispatch(
-          adminLoginActionCreator({
-            ...loggedUser,
-            accessToken,
-          })
-        );
-
-        window.localStorage.setItem("token", accessToken);
-
-        navigate("/pending-orders");
-      } catch {}
-    },
-    [apiUrl, dispatch, navigate]
-  );
-
   const loadPendingOrders = useCallback(async () => {
     try {
       const url = `${apiUrl}admin/pending-orders`;
@@ -57,6 +33,28 @@ const useAdmin = () => {
       } catch {}
     },
     [apiUrl, dispatch]
+  );
+  const adminLogin = useCallback(
+    async (data: loginData) => {
+      try {
+        const url = `${apiUrl}admin/login`;
+        const response = await axios.post(url, data);
+
+        const { accessToken } = await response.data;
+
+        const loggedUser: JwtPayloadCustom = jwtDecode(accessToken);
+        dispatch(
+          adminLoginActionCreator({
+            ...loggedUser,
+            accessToken,
+          })
+        );
+
+        window.localStorage.setItem("token", accessToken);
+        navigate("/home");
+      } catch {}
+    },
+    [apiUrl, dispatch, navigate]
   );
 
   const cancelOrder = useCallback(
