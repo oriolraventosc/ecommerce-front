@@ -5,7 +5,7 @@ import mainTheme from "../../styles/mainTheme";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { BrowserRouter } from "react-router-dom";
-import Menu from "./Menu";
+import AdminPage from "./AdminPage";
 
 const mockedUsedNavigate = jest.fn();
 
@@ -22,7 +22,7 @@ describe("Given a Menu component", () => {
           <Provider store={store}>
             <ThemeProvider theme={mainTheme}>
               <GlobalStyles />
-              <Menu />
+              <AdminPage />
             </ThemeProvider>
           </Provider>
         </BrowserRouter>
@@ -39,7 +39,7 @@ describe("Given a Menu component", () => {
           <Provider store={store}>
             <ThemeProvider theme={mainTheme}>
               <GlobalStyles />
-              <Menu />
+              <AdminPage />
             </ThemeProvider>
           </Provider>
         </BrowserRouter>
