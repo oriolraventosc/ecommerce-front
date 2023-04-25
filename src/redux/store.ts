@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { userReducer } from "./features/userSlicer/userSlicer";
 import { adminReducer } from "./features/AdminSlicer/AdminSlicer";
+import { uiReducer } from "./features/uiSlicer/uiSlicer";
 
 export const store = configureStore({
   reducer: {
     userActions: userReducer,
     adminActions: adminReducer,
+    uiActions: uiReducer,
   },
 });
 
