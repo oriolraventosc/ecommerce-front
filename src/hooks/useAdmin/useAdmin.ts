@@ -1,5 +1,10 @@
 import axios from "axios";
-import { adminLoginActionCreator } from "../../redux/features/AdminSlicer/AdminSlicer";
+import {
+  acceptOrderActionCreator,
+  adminLoginActionCreator,
+  cancelOrderActionCreator,
+  loadPendingOrdersActionCreator,
+} from "../../redux/features/AdminSlicer/AdminSlicer";
 import { useAppDispatch } from "../../redux/hooks";
 import { useCallback } from "react";
 import { JwtPayloadCustom, loginData } from "../../types/types";
@@ -33,7 +38,38 @@ const useAdmin = () => {
     },
     [apiUrl, dispatch, navigate]
   );
-  return { adminLogin };
+
+  const loadPendingOrders = useCallback(async () => {
+    try {
+      const url = `${apiUrl}admin/pending-orders`;
+      const response = await axios.get(url);
+      const apiResponse = response.data;
+      dispatch(loadPendingOrdersActionCreator(apiResponse.pendingOrders));
+    } catch {}
+  }, [apiUrl, dispatch]);
+
+  const acceptOrder = useCallback(
+    async (id: string) => {
+      try {
+        const url = `${apiUrl}admin/accept-order/${id}`;
+        await axios.patch(url);
+        dispatch(acceptOrderActionCreator(id));
+      } catch {}
+    },
+    [apiUrl, dispatch]
+  );
+
+  const cancelOrder = useCallback(
+    async (id: string) => {
+      try {
+        const url = `${apiUrl}admin/cancel-order/${id}`;
+        await axios.patch(url);
+        dispatch(cancelOrderActionCreator(id));
+      } catch {}
+    },
+    [apiUrl, dispatch]
+  );
+  return { adminLogin, loadPendingOrders, acceptOrder, cancelOrder };
 };
 
 export default useAdmin;
