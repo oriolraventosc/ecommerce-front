@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-const apiUrl = process.env.REACT_APP_URL;
+const apiUrl = process.env.REACT_APP_URL_MOCK;
 
 const handlers = [
   rest.get(`${apiUrl}products/loadAll`, async (request, response, context) => {
