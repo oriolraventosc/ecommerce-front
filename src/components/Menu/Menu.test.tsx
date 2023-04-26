@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { BrowserRouter } from "react-router-dom";
 import Menu from "./Menu";
+import userEvent from "@testing-library/user-event";
 
 const mockedUsedNavigate = jest.fn();
 
@@ -33,6 +34,24 @@ describe("Given a Menu component", () => {
       expect(expectedText).toBeInTheDocument();
     });
 
+    test("Then it should show the text 'USB Platform' and when clicked it should call an action", async () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ThemeProvider theme={mainTheme}>
+              <GlobalStyles />
+              <Menu />
+            </ThemeProvider>
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const expectedText = screen.getByText("USB Platform");
+      await userEvent.click(expectedText);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
+    });
+
     test("Then it should show a cart icon", () => {
       render(
         <BrowserRouter>
@@ -48,6 +67,24 @@ describe("Given a Menu component", () => {
       const expectedIcon = screen.queryByLabelText("cart");
 
       expect(expectedIcon).toBeInTheDocument();
+    });
+
+    test("Then it should show am icon and when clicked it should call an action", async () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ThemeProvider theme={mainTheme}>
+              <GlobalStyles />
+              <Menu />
+            </ThemeProvider>
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const expectedIcon = screen.queryByLabelText("cart") as HTMLElement;
+      await userEvent.click(expectedIcon);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });
