@@ -6,6 +6,17 @@ import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { BrowserRouter } from "react-router-dom";
 import PendingProduct from "./PendingProduct";
+import userEvent from "@testing-library/user-event";
+
+const mockAccept = jest.fn();
+const mockCancel = jest.fn();
+
+jest.mock("../../hooks/useAdmin/useAdmin", () => {
+  return () => ({
+    acceptOrder: mockAccept,
+    cancelOrder: mockCancel,
+  });
+});
 
 describe("Given a PendingProduct component", () => {
   describe("When it is rendered", () => {
@@ -106,6 +117,31 @@ describe("Given a PendingProduct component", () => {
       expect(expectedIcon).toBeInTheDocument();
     });
 
+    test("Then it should show a icon with an accessible name 'Accept order' and when clicked it should call an action", async () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ThemeProvider theme={mainTheme}>
+              <GlobalStyles />
+              <PendingProduct
+                name="product"
+                image="product.jpg"
+                quantity={2}
+                key={123}
+              />
+            </ThemeProvider>
+          </Provider>
+        </BrowserRouter>
+      );
+      const iconAccessibleName = "Accept order";
+
+      const expectedIcon = screen.queryByLabelText(
+        iconAccessibleName
+      ) as HTMLElement;
+      await userEvent.click(expectedIcon);
+      expect(mockAccept).toHaveBeenCalled();
+    });
+
     test("Then it should show a icon with an accessible name 'Cancel order'", () => {
       render(
         <BrowserRouter>
@@ -127,6 +163,32 @@ describe("Given a PendingProduct component", () => {
       const expectedIcon = screen.queryByLabelText(iconAccessibleName);
 
       expect(expectedIcon).toBeInTheDocument();
+    });
+
+    test("Then it should show a icon with an accessible name 'Cancel order' and when clicked it should call an action", async () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ThemeProvider theme={mainTheme}>
+              <GlobalStyles />
+              <PendingProduct
+                name="product"
+                image="product.jpg"
+                quantity={2}
+                key={123}
+              />
+            </ThemeProvider>
+          </Provider>
+        </BrowserRouter>
+      );
+      const iconAccessibleName = "Cancel order";
+
+      const expectedIcon = screen.queryByLabelText(
+        iconAccessibleName
+      ) as HTMLElement;
+      await userEvent.click(expectedIcon);
+
+      expect(mockCancel).toHaveBeenCalled();
     });
   });
 });
