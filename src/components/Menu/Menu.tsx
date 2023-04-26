@@ -24,6 +24,7 @@ const Menu = (): JSX.Element => {
             color: "#fff",
             textAlign: "center",
             pt: "0.5rem",
+            cursor: "pointer",
           }}
           onClick={() => navigate("/")}
         >
@@ -37,6 +38,7 @@ const Menu = (): JSX.Element => {
             fontSize: "2rem",
             pt: "0.5rem",
             color: "primary.light",
+            cursor: "pointer",
           }}
         />
       </MenuStyled>
