@@ -78,6 +78,8 @@ const CheckoutForm = (): JSX.Element => {
             required
             fullWidth
             id="name"
+            error={initialForm.name.length < 3 && initialForm.name !== ""}
+            helperText={"This field is required"}
             label="Name"
             aria-label="name"
             name="name"
@@ -90,6 +92,8 @@ const CheckoutForm = (): JSX.Element => {
             required
             fullWidth
             name="email"
+            error={initialForm.email.length < 6 && initialForm.email !== ""}
+            helperText={"This field is required"}
             onChange={handleFormChange}
             label="E-mail"
             aria-label="email"
@@ -103,6 +107,11 @@ const CheckoutForm = (): JSX.Element => {
             required
             fullWidth
             name="credit-card"
+            error={
+              initialForm.creditCardNumber !== "" &&
+              initialForm.creditCardNumber.length < 2
+            }
+            helperText={"This field is required"}
             onChange={handleFormChange}
             label="Credit card"
             aria-label="credit-card"
@@ -115,6 +124,8 @@ const CheckoutForm = (): JSX.Element => {
             required
             fullWidth
             name="city"
+            error={initialForm.city.length < 2 && initialForm.city !== ""}
+            helperText={"This field is required"}
             onChange={handleFormChange}
             label="City"
             aria-label="city"
@@ -124,7 +135,6 @@ const CheckoutForm = (): JSX.Element => {
           <TextField
             className="input-field"
             margin="normal"
-            required
             fullWidth
             name="Birth-date"
             onChange={handleFormChange}
@@ -137,6 +147,7 @@ const CheckoutForm = (): JSX.Element => {
           <Button
             className="submit-button"
             type="submit"
+            aria-label="submit button"
             disableRipple
             fullWidth
             variant="contained"
