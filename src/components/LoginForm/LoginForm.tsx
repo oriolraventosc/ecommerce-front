@@ -82,6 +82,10 @@ const LoginForm = (): JSX.Element => {
             margin="normal"
             required
             fullWidth
+            error={
+              initialForm.username.length < 4 && initialForm.username !== ""
+            }
+            helperText={"This field is required"}
             id="username"
             label="Username"
             aria-label="username"
@@ -94,6 +98,10 @@ const LoginForm = (): JSX.Element => {
             margin="normal"
             required
             aria-label="Password"
+            error={
+              initialForm.password.length < 4 && initialForm.password !== ""
+            }
+            helperText={"This field is required"}
             fullWidth
             name="password"
             onChange={handleFormChange}
